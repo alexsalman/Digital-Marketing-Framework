@@ -1,0 +1,11 @@
+{% extends 'loop/base.html' %}
+
+{% block title %}
+    Company Details
+{% endblock %}
+
+{% block body %}
+    <img src="{{ company.company_logo.url }}">
+    <h1>{{ company.market_name }}</h1>
+    <h3>{{ company.founded_year }}</h3>
+{% endblock %}

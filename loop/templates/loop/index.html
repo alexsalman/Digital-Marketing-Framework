@@ -1,0 +1,15 @@
+{% extends 'loop/base.html' %}
+
+{% block body %}
+    <div class="container">
+        {% for company in all_companies %}
+            <div class="col-md-3">
+                <div class="jumbotron">
+                    <img src="{{ company.company_logo.url }}" class="img-thumbnail" alt="No Picture Uploaded">
+                    <h4><a href="{% url 'loop:detail' company.id %}">{{ company.market_name }}</a></h4>
+                    <h5>{{ company.founded_year }}</h5><h5>{{ company.address_country }}</h5>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

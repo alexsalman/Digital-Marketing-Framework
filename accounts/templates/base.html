@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <title>{% block title %}Looprace{% endblock %}</title>
+
+    <!-- Loads the path to the static files -->
+    {% load staticfiles %}
+    <!-- Bootstrap link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet" type="text/css">
+    <!-- CSS link-->
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/style.css' %}"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!--navigation bar-->
+    <br>
+    <div class="container">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <!-- logo and header-->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="">LOOPRACE</a>
+                </div>
+                <!-- Items -->
+                <div class="collapse navbar-collapse" id="Navbar">
+                    {% if user.is_authenticated %}
+                    <ul class="nav navbar-nav">
+                        <li class="#">
+                            <a href="{% url 'home:home' %}">
+                                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Home
+                            </a>
+                        </li>
+                        <li class="#">
+                            <a href="{% url 'accounts:view_profile' %}">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Profile
+                            </a>
+                        </li>
+                        <li class="#">
+                            <a href="{% url 'accounts:edit_profile' %}">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Edit profile
+                            </a>
+                        </li>
+                        <li class="#">
+                            <a href="{% url 'accounts:change_password' %}">
+                                <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>&nbsp; Change password
+                            </a>
+                        </li>
+                        <li class="#">
+                            <a href="{% url 'accounts:upload_video' %}">
+                                <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>&nbsp; Upload Video
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="#">
+                            <a href="{% url 'accounts:view_profile' %}">
+                                {{request.user}}&nbsp;&nbsp;<img src="{{ request.user.userprofile.profile_picture.url }}" width="20" height="20">
+                            </a>
+                        </li>
+                        <li class="#">
+                            <a href="{% url 'accounts:logout' %}">
+                                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp; Log out
+                            </a>
+                        </li>
+                    </ul>
+                    {% else %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="#">
+                            <a href="{% url 'accounts:login' %}">
+                                <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; Log in
+                            </a>
+                        </li>
+                        <li class="#">
+                            <a href="{% url 'accounts:password_reset' %}">
+                                <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>&nbsp; Password reset
+                            </a>
+                        </li>
+                        <li class="#">
+                            <a href="{% url 'accounts:register' %}">
+                                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp; Register
+                            </a>
+                        </li>
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </div>
+    {% block body %}
+        <h3>LOOPRACE</h3>
+    {% endblock %}
+    <br><br>
+    <center>
+        <div class="footer">
+            <p>Looprace &#9400; 2017. All Rights Reserved.</p>
+        </div>
+    </center>
+</body>
+</html>

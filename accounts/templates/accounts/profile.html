@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-md-4">
+            <h4>Welcome to {{user}}'s profile</h4>
+            <br>
+            <p>First name: {{user.first_name}}</p>
+            <p>Last name: {{user.last_name}}</p>
+            <p>Email: {{user.email}}</p>
+            <img src="{{ user.userprofile.profile_picture.url }}" width="240" height="240" alt="No Picture Uploaded">
+            <p>Phone Number: {{user.userprofile.phone_number}}</p>
+            <p>Website URL: {{user.userprofile.website_url}}</p>
+            <p>Country Name: {{user.userprofile.address_country}}</p>
+            <p>State / Province Name: {{user.userprofile.address_state}}</p>
+            <p>City Name: {{user.userprofile.address_city}}</p>
+            <p>ZIP Code: {{user.userprofile.address_zip}}</p>
+            <p>Street Name / Number: {{user.userprofile.address_street}}</p>
+            <p>Postal Address: {{user.userprofile.address_postal}}</p>
+        </div>
+        <div class="col-md-8">
+            <h4>Uploaded videos</h4>
+
+                    <h2>video: {{ obj.user }}</h2>
+                  <video width="320" height="240" controls>
+
+                    <source src="{{ user }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video>
+
+        </div>
+    </div>
+{% endblock %}

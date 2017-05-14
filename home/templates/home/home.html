@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-md-3">
+            <h3>The Current Loop</h3>
+            <br>
+            <div class=" col-md-9">
+            {% for company in companies %}
+                  <div class="col-md-4">
+                      <a href="{% url 'loop:detail' company.id %}">
+                          <img src="{{ company.company_logo.url }}" width="50" hight="50" alt="No Picture Uploaded">
+                      </a>
+                  </div>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <center><h3>Unleash The Creativity. Create The Unimaginable</h3></center>
+            <br><br>
+            <center>
+                <p>
+                    <font size="4">
+                        Our vision is building a new marketing concept for the future,
+                        helping companies to grow faster and deliver more value to their clients.
+                        Clients will not be just another product consumer,
+                        but they will be part of products’ and companies’ growth.
+                        We believe that creativity is inclusive, limitless, and must be awarded.
+                        <br><br>The Loop helps building true business community, where consumers are part of it.
+                        We believe that the best marketing strategies are drawn by the consumers themselves,
+                        and that is where the true value of products is reviled.
+                        <br><br>The Loop helps unleash the creativity with unlimited rewards.
+                        The billions of dollars that are currently spend on T.V
+                        and street Ads is coming to an end, The Loop is redirecting
+                        all that money to actual consumer by having them being part of that marketing world.
+                    </font>
+                </p>
+            </center>
+        </div>
+        <div class="col-md-3" align="right">
+            <h3>Outstanding Users</h3>
+            <div class="jumbotron">
+            {% for user in users %}
+                <img src="{{ user.userprofile.profile_picture.url }}" width="50" hight="50" alt="No Picture Uploaded">
+                <a href="{% url 'accounts:view_profile_with_pk' pk=user.pk %}">
+                    <h5>{{ user.username }}</h5>
+                </a>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

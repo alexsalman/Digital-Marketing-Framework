@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Video{% endblock %}
+
+{% block body %}
+<div class='container'>
+  <h3>Upload your video here, {{request.user}}</h3><br>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+    <p><a href="{% url 'home:home' %}">Return to home</a></p>
+</div>
+{% endblock %}

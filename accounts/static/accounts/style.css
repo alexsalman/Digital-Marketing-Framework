@@ -1,0 +1,8 @@
+body {
+    background-image: url("background.jpg");
+}
+.jumbotron {
+  background-color: rgba(245, 245, 245, 0.6);
+  width: 200px;
+  height: 500px;
+}

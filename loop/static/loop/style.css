@@ -1,0 +1,21 @@
+
+body{
+  background: rgb(12, 8, 71);
+  font-family: 'Aclonica';
+}
+
+.navbar-brand{
+  border-radius: 0;
+  font-family: 'Russo One' ,cursive;
+}
+
+/*.thumbnail:hover {
+    position:relative;
+    top:-25px;
+    left:-35px;
+    width:500px;
+    height:auto;
+    display:block;
+    z-index:999;
+    font-size: 40px;
+}*/
